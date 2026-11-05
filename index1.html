@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Link Read Test</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+/* Layout: one plain reading column. Verification block first, then summary, then task table. No JavaScript, so any reader that fetches raw HTML sees everything. */
+:root {
+  --bg: #f6f7f5;
+  --surface: #ffffff;
+  --fg: #1b2420;
+  --muted: #5b6862;
+  --line: #d7ddd9;
+  --accent: #0f6b5c;
+  --accent-soft: #dff0ec;
+  --warn: #a4400f;
+  --warn-soft: #fbe9de;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101513;
+    --surface: #18201d;
+    --fg: #e6ece8;
+    --muted: #93a29a;
+    --line: #2b3732;
+    --accent: #55c2ad;
+    --accent-soft: #17332d;
+    --warn: #f0a073;
+    --warn-soft: #3a2316;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101513;
+  --surface: #18201d;
+  --fg: #e6ece8;
+  --muted: #93a29a;
+  --line: #2b3732;
+  --accent: #55c2ad;
+  --accent-soft: #17332d;
+  --warn: #f0a073;
+  --warn-soft: #3a2316;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  padding-block: 28px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+main { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+h1 { font-size: 1.7rem; line-height: 1.2; margin: 0 0 6px; text-wrap: balance; }
+h2 { font-size: 1.05rem; margin: 0 0 10px; text-wrap: balance; }
+p { margin: 0; max-width: 65ch; }
+.sub { color: var(--muted); }
+.label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.code-box { background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 6px; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+.code { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 500; color: var(--accent); overflow-wrap: anywhere; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.facts li { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 12px; min-width: 0; }
+.facts b { display: block; font-family: var(--font-mono); font-size: 1.6rem; font-weight: 500; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 460px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+tr:last-child td { border-bottom: 0; }
+td.date { font-family: var(--font-mono); white-space: nowrap; }
+.pill { font-family: var(--font-mono); font-size: 0.75rem; padding: 2px 8px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.pill.overdue { background: var(--warn-soft); color: var(--warn); }
+.pill.done { background: transparent; border: 1px solid var(--line); color: var(--muted); }
+.ask { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; }
+.ask ol { margin: 8px 0 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 4px; }
+</style>
+
+</head>
+<body>
+<main>
+  <header>
+    <p class="label">Sample data for a connection test</p>
+    <h1>Link Read Test</h1>
+    <p class="sub">This page holds made-up tasks. Nothing here is real personal data. It exists to check whether an AI assistant can open a link and read what is on the page.</p>
+  </header>
+
+  <section class="code-box" aria-labelledby="code-h">
+    <p class="label" id="code-h">Verification code</p>
+    <p class="code">TEAL-OTTER-4471</p>
+    <p class="sub">Page version 1. The assistant could only know this code by reading this page.</p>
+  </section>
+
+  <section aria-labelledby="sum-h">
+    <h2 id="sum-h">Summary as of Wednesday, November 4, 2026</h2>
+    <ul class="facts">
+      <li><b>7</b>Total tasks</li>
+      <li><b>6</b>Still open</li>
+      <li><b>1</b>Done</li>
+      <li><b>2</b>Overdue</li>
+      <li><b>1</b>Due today</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="tasks-h">
+    <h2 id="tasks-h">Tasks</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Task</th><th>Due</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Renew library card</td><td class="date">Nov 2</td><td><span class="pill overdue">Overdue</span></td></tr>
+          <tr><td>2</td><td>Send invoice draft</td><td class="date">Nov 3</td><td><span class="pill overdue">Overdue</span></td></tr>
+          <tr><td>3</td><td>Fix website footer link</td><td class="date">Nov 4</td><td><span class="pill">Due today</span></td></tr>
+          <tr><td>4</td><td>Water the plants</td><td class="date">Nov 4</td><td><span class="pill done">Done</span></td></tr>
+          <tr><td>5</td><td>Book dentist appointment</td><td class="date">Nov 6</td><td><span class="pill">Open</span></td></tr>
+          <tr><td>6</td><td>Plan weekend trip</td><td class="date">Nov 8</td><td><span class="pill">Open</span></td></tr>
+          <tr><td>7</td><td>Back up laptop</td><td class="date">Nov 10</td><td><span class="pill">Open</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="ask" aria-labelledby="ask-h">
+    <h2 id="ask-h">Questions to ask the assistant</h2>
+    <p class="sub">After giving it this link, try these. The right answers are in the page above.</p>
+    <ol>
+      <li>What is the verification code on the page?</li>
+      <li>Which tasks are overdue?</li>
+      <li>What is the last task on the list, and when is it due?</li>
+    </ol>
+  </section>
+</main>
+</body>
+</html>
